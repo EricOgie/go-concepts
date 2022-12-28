@@ -2,27 +2,37 @@ package main
 
 import (
 	"fmt"
-	"sort"
 )
 
 func main() {
 
-	ages := []int{45, 24, 15, 100, 33, 61}
-
 	boys := []string{"Eric", "James", "Greg", "Josh", "Samuel"}
 
-	// Search the index of a particular slice before sorting
-	fmt.Println(sort.SearchInts(ages, 100))
-	fmt.Println(sort.SearchStrings(boys, "Greg"))
-	// Sort ages in increasing order
-	sort.Ints(ages)
-	// Sort boys in Alphabetical order
-	sort.Strings(boys)
-	// print sorted list
-	fmt.Println(ages)
-	fmt.Println(boys)
+	// Loops like mare conditional block
+	x := 0
+	for x < 5 {
+		fmt.Println("Value of x is: ", x)
+		x++
+	}
 
-	// Search the index of a particular slice after sorting
-	fmt.Println(sort.SearchInts(ages, 100))
-	fmt.Println(sort.SearchStrings(boys, "Greg"))
+	// Normal for loop
+	for x := 0; x < 5; x++ {
+		fmt.Println("Value of x is: ", x)
+	}
+
+	for x := 0; x < len(boys); x++ {
+		fmt.Println(boys[x])
+	}
+
+	// Foreach loop with rang
+
+	for i, v := range boys {
+		fmt.Printf("value at index %v is : %v \n", i, v)
+	}
+
+	// Since Go won't allow you declare unused variables, the foreach loop can be adapted for cases where either index or the value is not needed
+
+	for _, v := range boys {
+		fmt.Printf("value is : %v \n", v)
+	}
 }
