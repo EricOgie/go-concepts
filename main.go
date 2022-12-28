@@ -1,16 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
+/* It's important to note that that Go comes as a light weight language/tool by default. Onlike many other languages where you have
+ * many in-built functions and methods loaded into the program by default, Go seperates her utility functionionalities in packages that must be
+ * explicitly imported in order to use the public functions in these packages. Typical examples include fmt and string package.
+ */
 
-/* Arraay follow the general concepts of array for other languages. The onliy difference that may exist for some other languages is that
- *In Go, array has fixed defined length (bound). Once the length of a list is defined it is immediately taken as an array in Go and the 
- * size or length can not be changed
-*/
+var myHello string = "Welcome to Oneticha's world!"
 
-/*
- * Slice, on the other hand, correspond to a list with no definit size bound. i.e, items can be appended and removed from the list
-*/
 func playaarray() {
 	first := []string{"yoshi", "luigi", "peach", "bowser"}
 
@@ -28,26 +29,27 @@ func playaarray() {
 	fmt.Println(first[2:])
 	fmt.Println(first[:2])
 
-
 }
 
 func main() {
-	fmt.Println("Welcome to Eric's Goland")
 
-	name := "Eric Ogie"
-	score := 25.67
-	age := 24
+	/*
+	* To manipulate the string, myHello, we can import "string" package
+	* and test our hands on a number of functions built-in to the string package.
+	 */
 
-	fmt.Printf("My name is %v, I am %v years old and my ave score on Slam is %v point average \n", name, age, score)
-	//fmt.Printf("name as used here is of type %T \n", name)
-	// fmt.Printf("score as used is of type %T /n", score)
-	fmt.Printf("My last score is %0.5F \n", 98.221)
+	fmt.Println(strings.Split(myHello, " "))
+	fmt.Println(strings.Split(myHello, " ")[0])
+	fmt.Println(strings.Contains(myHello, "Welcome"))
+	fmt.Println(strings.ToUpper(myHello))
+	fmt.Println(strings.Index(myHello, "world"))
 
-	statement := fmt.Sprintf("My name is %v, I am %v years old and my ave score on Slam is %v point average \n", name, age, score)
+	// NB: the manipulation of these function is never on the original string, instead, it create a copy of the original string and only
+	// manipulate the copy of the string it created.
 
-	fmt.Println("My last state is")
-	fmt.Println(statement)
+	newMyHello := strings.ReplaceAll(myHello, "Oneticha", "Aghahowa")
+	fmt.Println(newMyHello)
 
-	playaarray()
-
+	fmt.Println("Altered MyHello = " + strings.ReplaceAll(myHello, "Oneticha", "Aghahowa"))
+	fmt.Println("Original MyHello = " + myHello)
 }
