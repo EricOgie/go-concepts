@@ -2,14 +2,12 @@
 ### Program Result
 
 ```
-➜  gocon git:(array/slice-concepts) ✗ go run main.go
-[Welcome to Oneticha's world!]
-Welcome
-true
-WELCOME TO ONETICHA'S WORLD!
-22
-Welcome to Aghahowa's world!
-Altered MyHello = Welcome to Aghahowa's world!
-Original MyHello = Welcome to Oneticha's world!
-➜  gocon git:(array/slice-concepts) ✗ 
+➜  gocon git:(sort-package) ✗ go run main.go
+3
+1
+[15 24 33 45 61 100]
+[Eric Greg James Josh Samuel]
+5
+1
+➜  gocon git:(sort-package) ✗ 
 ```
