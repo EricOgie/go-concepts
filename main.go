@@ -2,37 +2,37 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
+
+// Define a function with double return value
+func getInitials(fullname string) (string, string) {
+
+	var initials []string
+	capitalizeName := strings.ToUpper(fullname)
+
+	names := strings.Split(capitalizeName, " ")
+
+	for _, v := range names {
+		initials = append(initials, v[:1])
+	}
+
+	if len(initials) > 1 {
+		return initials[0], initials[1]
+	}
+
+	return initials[0], "_"
+
+}
 
 func main() {
 
-	boys := []string{"Eric", "James", "Greg", "Josh", "Samuel"}
+	firstInitial1, surnameInitials1 := getInitials("SAM OGIE")
+	firstInitial2, surnameInitials2 := getInitials("GRAHAM Samson James")
+	firstInitial3, surnameInitials3 := getInitials("James")
 
-	// Loops like mare conditional block
-	x := 0
-	for x < 5 {
-		fmt.Println("Value of x is: ", x)
-		x++
-	}
+	fmt.Println(firstInitial1, surnameInitials1)
+	fmt.Println(firstInitial2, surnameInitials2)
+	fmt.Println(firstInitial3, surnameInitials3)
 
-	// Normal for loop
-	for x := 0; x < 5; x++ {
-		fmt.Println("Value of x is: ", x)
-	}
-
-	for x := 0; x < len(boys); x++ {
-		fmt.Println(boys[x])
-	}
-
-	// Foreach loop with rang
-
-	for i, v := range boys {
-		fmt.Printf("value at index %v is : %v \n", i, v)
-	}
-
-	// Since Go won't allow you declare unused variables, the foreach loop can be adapted for cases where either index or the value is not needed
-
-	for _, v := range boys {
-		fmt.Printf("value is : %v \n", v)
-	}
 }
