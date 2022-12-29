@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 )
 
 type bill struct {
@@ -14,12 +15,12 @@ type bill struct {
 func getNewBill(billName string) bill {
 	return bill{
 		name:  billName,
-		items: map[string]float64{"pie": 5.99, "cake": 35.12},
+		items: map[string]float64{},
 		tip:   0.00,
 	}
 }
 
-// Receiver function
+// ---------  Receiver functions
 func (b bill) format() string {
 	formattedBill := "Bill Breakdown: \n"
 	total := 0.00
@@ -45,4 +46,16 @@ func (b *bill) addItem(itemName string, itemPrice float64) {
 
 func (b *bill) updateBillTip(newtip float64) {
 	b.tip = newtip
+}
+
+func (b *bill) saveBill() {
+	datatoSave := []byte(b.format())
+	filepath := "bill/" + b.name + ".txt"
+	er := os.WriteFile(filepath, datatoSave, 0644)
+
+	if er != nil {
+		panic(er)
+	}
+
+	fmt.Println("Bill saved successfully")
 }
