@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type bill struct {
 	name  string
@@ -13,7 +15,7 @@ func getNewBill(billName string) bill {
 	return bill{
 		name:  billName,
 		items: map[string]float64{"pie": 5.99, "cake": 35.12},
-		tip:   55.00,
+		tip:   0.00,
 	}
 }
 
@@ -27,8 +29,20 @@ func (b bill) format() string {
 		total += value
 	}
 
+	total += b.tip
+	// Add Tip
+	formattedBill += fmt.Sprintf("%-25v ...$%0.2f \n", "tip:", b.tip)
 	// Now Add the total to the formattedBill
 	formattedBill += fmt.Sprintf("%-25v ...$%0.2f \n", "Total:", total)
 	// NB. %-25 is to pad up with 25charracter space just to make it the text more formatted
 	return formattedBill
+}
+
+// Added functions that can update and modify the original bill passed
+func (b *bill) addItem(itemName string, itemPrice float64) {
+	(*b).items[itemName] = itemPrice // Note that (*b) is not really needed to de-reference b since struct are de-reference by default
+}
+
+func (b *bill) updateBillTip(newtip float64) {
+	b.tip = newtip
 }

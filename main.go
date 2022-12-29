@@ -19,4 +19,10 @@ func main() {
 
 	fmt.Println(bill.format())
 
+	bill.addItem("table", 2.04)
+
+	bill.updateBillTip(3.03)
+
+	fmt.Println(bill.format())
+
 }
