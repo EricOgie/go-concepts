@@ -50,7 +50,7 @@ func promptOptions(b bill, reader *bufio.Reader) {
 		b.saveBill()
 	default:
 		fmt.Println("That was an Invalid Option")
-		getUserInput("Choose Option \na) - Add Item\nb) - Save Bill\nc) - Add Tip", reader)
+		promptOptions(b, reader)
 	}
 }
 
